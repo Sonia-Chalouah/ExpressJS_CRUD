@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>Actions</th> <!-- Ajout de la colonne Actions -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in cnt %}
+                <tr>
+                    <td>{{ contact.FullName }}</td>
+                    <td>{{ contact.Phone }}</td>
+                    <td> <!-- Nouvelle colonne pour les actions -->
+                        <!-- Bouton pour supprimer -->
+                        <form action="/contacts/delete/{{ contact._id }}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
